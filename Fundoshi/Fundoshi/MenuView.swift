@@ -141,7 +141,7 @@ struct MenuView: View {
                 
             }
         }
-        .frame(width: 300, height: 120)
+        .frame(width: 300, height: 140)
         .padding(10)
         .animation(.smooth(duration: 0.1), value: timeSec)
     }
