@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct MenuView: View {
     @State private var isHovering: Bool = false
     @State private var tmp: String = ""
     @State private var setTime: Int = 60
     @State private var timeSec: Int = 60
-    @State private var timeString: String = "01:00"
+    @State var audioPlayer: AVAudioPlayer!
+    @Binding var timeString: String
     @State private var timerOn: Bool = false
     @Environment(\.openWindow) var openWindow
     
@@ -52,7 +54,7 @@ struct MenuView: View {
                     Text(timerOn ? "pause" : "resume")
                 }
                 .buttonStyle(.plain)
-                Spacer()
+                ProgressView(value: Double(timeSec), total: Double(setTime))
             }
             .foregroundStyle(.secondary)
             HStack {
@@ -91,6 +93,8 @@ struct MenuView: View {
                     openWindow(id: "details")
                     for window in NSApplication.shared.windows {
                         if window.title == "details" {
+                            window.standardWindowButton(NSWindow.ButtonType.zoomButton)!.isHidden = true
+                            window.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)!.isHidden = true
                             window.level = .floating
                         }
                     }
@@ -104,7 +108,7 @@ struct MenuView: View {
             Spacer()
             HStack(alignment: .bottom) {
                 HStack {
-                    Text("fundoshi v1.0")
+                    Text("fundoshi v1.1")
                         .foregroundStyle(.secondary)
                     Divider()
                     Button {
@@ -117,7 +121,7 @@ struct MenuView: View {
                 .frame(height: 15)
                 Spacer()
                 Text("\(timeString)")
-                    .font(.system(size: isHovering ? 45: 40))
+                    .font(.system(size: isHovering ? 40 : 35))
                     .fontWeight(.light)
                     .onHover(perform: { hovering in
                         withAnimation {
@@ -134,16 +138,18 @@ struct MenuView: View {
                                 timerOn = false
                                 timeSec = setTime
                                 timeString = buildString(secs: timeSec)
+                                audioPlayer.play()
                                 // play sound
                             }
                         }
                     }
-                
             }
         }
         .frame(width: 300, height: 140)
         .padding(10)
-        .animation(.smooth(duration: 0.1), value: timeSec)
+        .onAppear {
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "mp3")!))
+        }
     }
     
     private func exitApp() {
@@ -182,6 +188,3 @@ struct MenuView: View {
     }
 }
 
-#Preview {
-    MenuView()
-}

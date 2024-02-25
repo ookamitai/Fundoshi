@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SeperateWindow: View {
+    @Binding var timeString: String
     var body: some View {
         VStack {
-            Text("Hello, World!")
+            Text(timeString)
+                .font(.system(size: 35))
+                .shadow(radius: 10)
+                .padding(10)
+                .padding(.top, -15)
         }
     }
-}
-
-#Preview {
-    SeperateWindow()
 }
