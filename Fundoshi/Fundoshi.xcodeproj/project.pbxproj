@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB87F5A82B8B4AFD00F9060F /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB87F5A72B8B4AFD00F9060F /* ding.mp3 */; };
 		FBC5E8362B8A024000C2A459 /* FundoshiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */; };
 		FBC5E8382B8A024000C2A459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8372B8A024000C2A459 /* ContentView.swift */; };
 		FBC5E83A2B8A024100C2A459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E8392B8A024100C2A459 /* Assets.xcassets */; };
 		FBC5E83D2B8A024100C2A459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E83C2B8A024100C2A459 /* Preview Assets.xcassets */; };
 		FBC5E8462B8A04B100C2A459 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8452B8A04B100C2A459 /* MenuView.swift */; };
 		FBC5E8482B8A441C00C2A459 /* SeperateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8472B8A441C00C2A459 /* SeperateWindow.swift */; };
-		FBC5E84E2B8B23C300C2A459 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E84D2B8B23C300C2A459 /* ding.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB87F5A72B8B4AFD00F9060F /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
 		FBC5E8322B8A024000C2A459 /* Fundoshi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fundoshi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoshiApp.swift; sourceTree = "<group>"; };
 		FBC5E8372B8A024000C2A459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		FBC5E8442B8A03B800C2A459 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FBC5E8452B8A04B100C2A459 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FBC5E8472B8A441C00C2A459 /* SeperateWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateWindow.swift; sourceTree = "<group>"; };
-		FBC5E84D2B8B23C300C2A459 /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 				FBC5E8452B8A04B100C2A459 /* MenuView.swift */,
 				FBC5E8472B8A441C00C2A459 /* SeperateWindow.swift */,
 				FBC5E8372B8A024000C2A459 /* ContentView.swift */,
-				FBC5E84D2B8B23C300C2A459 /* ding.mp3 */,
+				FB87F5A72B8B4AFD00F9060F /* ding.mp3 */,
 				FBC5E8392B8A024100C2A459 /* Assets.xcassets */,
 				FBC5E83E2B8A024100C2A459 /* Fundoshi.entitlements */,
 				FBC5E83B2B8A024100C2A459 /* Preview Content */,
@@ -140,7 +140,7 @@
 			files = (
 				FBC5E83D2B8A024100C2A459 /* Preview Assets.xcassets in Resources */,
 				FBC5E83A2B8A024100C2A459 /* Assets.xcassets in Resources */,
-				FBC5E84E2B8B23C300C2A459 /* ding.mp3 in Resources */,
+				FB87F5A82B8B4AFD00F9060F /* ding.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +287,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fundoshi/Fundoshi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PPLU9GFJ6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -301,7 +301,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ookamitai.Fundoshi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -317,7 +317,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fundoshi/Fundoshi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PPLU9GFJ6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -331,7 +331,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ookamitai.Fundoshi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

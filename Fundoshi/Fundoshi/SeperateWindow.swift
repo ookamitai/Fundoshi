@@ -12,6 +12,7 @@ struct SeperateWindow: View {
     var body: some View {
         VStack {
             Text(timeString)
+                .fontDesign(.rounded)
                 .font(.system(size: 35))
                 .shadow(radius: 10)
                 .padding(10)

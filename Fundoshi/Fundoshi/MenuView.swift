@@ -54,7 +54,7 @@ struct MenuView: View {
                     Text(timerOn ? "pause" : "resume")
                 }
                 .buttonStyle(.plain)
-                ProgressView(value: Double(timeSec), total: Double(setTime))
+                ProgressView(value: Double(setTime - timeSec), total: Double(setTime))
             }
             .foregroundStyle(.secondary)
             HStack {
@@ -108,7 +108,7 @@ struct MenuView: View {
             Spacer()
             HStack(alignment: .bottom) {
                 HStack {
-                    Text("fundoshi v1.1")
+                    Text("fundoshi v1.2")
                         .foregroundStyle(.secondary)
                     Divider()
                     Button {
@@ -121,8 +121,8 @@ struct MenuView: View {
                 .frame(height: 15)
                 Spacer()
                 Text("\(timeString)")
+                    .fontDesign(.rounded)
                     .font(.system(size: isHovering ? 40 : 35))
-                    .fontWeight(.light)
                     .onHover(perform: { hovering in
                         withAnimation {
                             isHovering = hovering

@@ -15,13 +15,8 @@ struct FundoshiApp: App {
             MenuView(timeString: $timeString)
         } label: {
             Image(systemName: "clock.badge")
-            Text(timeString)
         }
         .menuBarExtraStyle(.window)
-        
-        WindowGroup {
-            ContentView()
-        }
         
         Window("details", id: "details") {
             SeperateWindow(timeString: $timeString)
