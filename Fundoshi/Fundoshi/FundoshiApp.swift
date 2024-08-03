@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct FundoshiApp: App {
-    @State private var timeString = "01:00"
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    @AppStorage("timeString") private var timeString = "01:00"
+    @AppStorage("appConfig") private var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true)
     var body: some Scene {
         MenuBarExtra {
-            MenuView(timeString: $timeString)
+            MenuView(timeString: $timeString, appConfig: $appConfig)
         } label: {
-            Image(systemName: "clock.badge")
+            Image(systemName: "clock")
+            Text(appConfig.isShowingMenuBarTime ? timeString : "")
         }
         .menuBarExtraStyle(.window)
         
@@ -22,8 +26,15 @@ struct FundoshiApp: App {
             SeperateWindow(timeString: $timeString)
                 .frame(width: 175, height: 50)
         }
-        .windowStyle(HiddenTitleBarWindowStyle())
+        .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
         .defaultPosition(.topTrailing)
+        
+        Window("config", id: "config") {
+            ContentView(appConfig: $appConfig)
+                .background(VisualEffectView().ignoresSafeArea())
+                .frame(maxWidth: 500, maxHeight: 350)
+        }
+        .windowResizability(.contentSize)
     }
 }
