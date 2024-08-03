@@ -117,7 +117,7 @@ struct MenuView: View {
                         }
                         
                     } label: {
-                        Text("seperate window")
+                        Text("separate window")
                     }
                     .buttonStyle(.plain)
                 }
