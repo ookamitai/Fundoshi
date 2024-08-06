@@ -29,6 +29,10 @@ enum FlipAnimation {
     case top, bottom
 }
 
+enum ContextClickAction {
+    case pause, openDetailWindow
+}
+
 struct AppConfig {
     var isShowingMenuBarTime: Bool
     var launchAtLogin: Bool
@@ -38,6 +42,7 @@ struct AppConfig {
     var fontStyle: FontSytle
     var flipAnimation: FlipAnimation
     var detailWindowAlpha: CGFloat
+    var contextClickAction: ContextClickAction
 }
 
 extension AppConfig: Codable {
@@ -50,6 +55,7 @@ extension AppConfig: Codable {
         case fontStyle
         case flipAnimation
         case detailWindowAlpha
+        case contextClickAction
 }
     
     func encode(to encoder: Encoder) throws {
@@ -79,6 +85,13 @@ extension AppConfig: Codable {
         }
         
         try container.encode(detailWindowAlpha, forKey: .detailWindowAlpha)
+        
+        switch contextClickAction {
+        case.pause:
+            try container.encode("pause", forKey: .contextClickAction)
+        case .openDetailWindow:
+            try container.encode("detail", forKey: .contextClickAction)
+        }
     }
     
     init(from decoder: Decoder) throws {
@@ -109,6 +122,14 @@ extension AppConfig: Codable {
             flipAnimation = .top
         }
         detailWindowAlpha = try container.decode(CGFloat.self, forKey: .detailWindowAlpha)
+        switch try container.decode(String.self, forKey: .contextClickAction) {
+        case "detail":
+            contextClickAction = .openDetailWindow
+        case "pause":
+            contextClickAction = .pause
+        default:
+            contextClickAction = .pause
+        }
     }
 }
 

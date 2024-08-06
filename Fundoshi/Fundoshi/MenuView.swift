@@ -17,14 +17,12 @@ struct MenuView: View {
     @State private var tmp: String = ""
     @AppStorage("setTime") private var setTime: Int = 60
     @AppStorage("timeSec") private var timeSec: Int = 60
-    @State var audioPlayer: AVAudioPlayer!
+    @State private var audioPlayer: AVAudioPlayer!
     @Binding var timeString: String
-    @State private var timerOn: Bool = false
+    @Binding var appState: AppState
     @State private var imageClockOpacity: Double = 0.05
-    @State private var isDetailWindowOpen: Bool = false
     @State private var doneLoad: Bool = false
     @Binding var appConfig: AppConfig
-    @Binding var isMenubarPresented: Bool
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     
@@ -36,7 +34,7 @@ struct MenuView: View {
             VStack {
                 TextField("set duration (min)...", text: $tmp)
                     .onSubmit {
-                        timerOn = false
+                        appState.timerOn = false
                         setTime = (Int(tmp) ?? 1) * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
@@ -45,25 +43,25 @@ struct MenuView: View {
                     Button {
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
-                        timerOn = true
+                        appState.timerOn = true
                     } label: {
                         Text("start")
                     }
                     .buttonStyle(.plain)
-                    .disabled(timerOn)
-                    .opacity(timerOn ? 0.5 : 1)
+                    .disabled(appState.timerOn)
+                    .opacity(appState.timerOn ? 0.5 : 1)
                     Button {
-                        timerOn.toggle()
+                        appState.timerOn.toggle()
                     } label: {
                         ZStack {
-                            Text(timerOn ? "pause" : "resume")
+                            Text(appState.timerOn ? "pause" : "resume")
                         }
                     }
                     .buttonStyle(.plain)              
                     Button {
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
-                        timerOn = false
+                        appState.timerOn = false
                     } label: {
                         Text("end")
                     }
@@ -74,7 +72,7 @@ struct MenuView: View {
                 Divider()
                 HStack {
                     Button {
-                        timerOn = false
+                        appState.timerOn = false
                         setTime = 5 * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
@@ -83,7 +81,7 @@ struct MenuView: View {
                     }
                     .buttonStyle(.plain)
                     Button {
-                        timerOn = false
+                        appState.timerOn = false
                         setTime = 20 * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
@@ -92,7 +90,7 @@ struct MenuView: View {
                     }
                     .buttonStyle(.plain)
                     Button {
-                        timerOn = false
+                        appState.timerOn = false
                         setTime = 45 * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
@@ -102,9 +100,9 @@ struct MenuView: View {
                     .buttonStyle(.plain)
                     Spacer()
                     Button {
-                        isMenubarPresented = false
-                        if !isDetailWindowOpen {
-                            isDetailWindowOpen.toggle()
+                        appState.isMenubarPresented = false
+                        if !appState.isDetailWindowOpen {
+                            appState.isDetailWindowOpen.toggle()
                             NSApp.activate(ignoringOtherApps: true)
                             openWindow(id: "details")
                             for window in NSApplication.shared.windows {
@@ -118,7 +116,7 @@ struct MenuView: View {
                                 }
                             }
                         } else {
-                            isDetailWindowOpen.toggle()
+                            appState.isDetailWindowOpen.toggle()
                             dismissWindow(id: "details")
                         }
                         
@@ -137,7 +135,7 @@ struct MenuView: View {
                      */
                     Spacer()
                     Button {
-                        isMenubarPresented = false
+                        appState.isMenubarPresented = false
                         NSApp.activate(ignoringOtherApps: true)
                         openWindow(id: "config")
                     } label: {
@@ -185,7 +183,7 @@ struct MenuView: View {
                             }
                             .offset(y: 5)
                             .onReceive(timer) { _ in
-                                if timerOn {
+                                if appState.timerOn {
                                     if timeSec > 0 {
                                         if timeSec % 2 == 0 {
                                             imageClockOpacity = 0.1
@@ -195,7 +193,7 @@ struct MenuView: View {
                                         timeSec -= 1
                                         timeString = buildString(secs: timeSec)
                                     } else {
-                                        timerOn = false
+                                        appState.timerOn = false
                                         timeSec = setTime
                                         timeString = buildString(secs: timeSec)
                                         if appConfig.playSound {

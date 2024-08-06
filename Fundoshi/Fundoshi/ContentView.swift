@@ -20,6 +20,10 @@ struct ContentView: View {
                         Label("Preferences", systemImage: "gear")
                     }
                     
+                    NavigationLink(value: "history") {
+                        Label("History", systemImage: "book.closed")
+                    }
+                    
                     NavigationLink(value: "about") {
                         Label("About", systemImage: "info.circle")
                     }
@@ -35,6 +39,7 @@ struct ContentView: View {
                     .navigationTitle("About")
             default:
                 Text("Select an item")
+                    .navigationTitle("")
             }
         }
     }

@@ -39,6 +39,11 @@ struct ConfigView: View {
                         Toggle(isOn: $appConfig.playSound) {
                             Text("Play sound when timer ends")
                         }
+                        Picker("Context click action", selection: $appConfig.contextClickAction) {
+                            Text("Pause / Resume timer").tag(ContextClickAction.pause)
+                            Text("Open / Close separate window").tag(ContextClickAction.openDetailWindow)
+                        }
+                        .frame(width: 350)
                         .padding(.bottom, 5)
                         HStack {
                             VStack {
@@ -184,7 +189,7 @@ struct ConfigView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1)
+        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause)
         
         var body: some View {
             ConfigView(appConfig: $appConfig)

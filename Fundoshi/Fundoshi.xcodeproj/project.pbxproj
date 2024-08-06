@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB3D89B62C621761001CDA2B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D89B52C621761001CDA2B /* HistoryView.swift */; };
+		FB3D89BA2C621BBF001CDA2B /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D89B92C621BBF001CDA2B /* MouseHandlerView.swift */; };
+		FB3D89BC2C622445001CDA2B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D89BB2C622445001CDA2B /* AppState.swift */; };
 		FB64D8F72C5DC5A900D4D608 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64D8F62C5DC5A900D4D608 /* AppConfig.swift */; };
 		FB64D8FB2C5DC60D00D4D608 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64D8FA2C5DC60D00D4D608 /* VisualEffectView.swift */; };
 		FB64D8FD2C5DCA6400D4D608 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64D8FC2C5DCA6400D4D608 /* Notifications.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB3D89B52C621761001CDA2B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		FB3D89B92C621BBF001CDA2B /* MouseHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseHandlerView.swift; sourceTree = "<group>"; };
+		FB3D89BB2C622445001CDA2B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FB4377362C5E7B9F00AD127F /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
 		FB64D8F62C5DC5A900D4D608 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		FB64D8FA2C5DC60D00D4D608 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -79,12 +85,15 @@
 			children = (
 				FBC5E8442B8A03B800C2A459 /* Info.plist */,
 				FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */,
+				FB3D89BB2C622445001CDA2B /* AppState.swift */,
+				FB3D89B92C621BBF001CDA2B /* MouseHandlerView.swift */,
 				FB64D8F62C5DC5A900D4D608 /* AppConfig.swift */,
 				FBED019E2C5D3387009BE37C /* Localizable.xcstrings */,
 				FBC5E8452B8A04B100C2A459 /* MenuView.swift */,
 				FBC5E8472B8A441C00C2A459 /* SeparateWindow.swift */,
 				FB64D8FA2C5DC60D00D4D608 /* VisualEffectView.swift */,
 				FBC5E8372B8A024000C2A459 /* ContentView.swift */,
+				FB3D89B52C621761001CDA2B /* HistoryView.swift */,
 				FB64D9082C5E01DD00D4D608 /* AboutView.swift */,
 				FB64D9002C5DF3B100D4D608 /* ConfigView.swift */,
 				FB64D8FC2C5DCA6400D4D608 /* Notifications.swift */,
@@ -189,11 +198,14 @@
 				FB64D8FD2C5DCA6400D4D608 /* Notifications.swift in Sources */,
 				FB64D9012C5DF3B100D4D608 /* ConfigView.swift in Sources */,
 				FB64D9092C5E01DD00D4D608 /* AboutView.swift in Sources */,
+				FB3D89B62C621761001CDA2B /* HistoryView.swift in Sources */,
 				FB64D8F72C5DC5A900D4D608 /* AppConfig.swift in Sources */,
 				FBC5E8382B8A024000C2A459 /* ContentView.swift in Sources */,
 				FBC5E8462B8A04B100C2A459 /* MenuView.swift in Sources */,
 				FBC5E8362B8A024000C2A459 /* FundoshiApp.swift in Sources */,
+				FB3D89BC2C622445001CDA2B /* AppState.swift in Sources */,
 				FB64D8FB2C5DC60D00D4D608 /* VisualEffectView.swift in Sources */,
+				FB3D89BA2C621BBF001CDA2B /* MouseHandlerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
