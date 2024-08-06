@@ -44,6 +44,10 @@ struct MenuView: View {
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
                         appState.timerOn = true
+                        if (appConfig.history.count >= 20) {
+                            appConfig.history.remove(at: 0)
+                        }
+                        appConfig.history.append(timeSec)
                     } label: {
                         Text("start")
                     }
@@ -240,36 +244,36 @@ struct MenuView: View {
             
         }
     }
-    
-    private func buildString(secs: Int) -> String {
-        var result = ""
-        var cpsecs = secs
-        let seconds = cpsecs % 60
-        cpsecs -= seconds
-        cpsecs /= 60
-        let minutes = cpsecs % 60
-        cpsecs -= minutes
-        cpsecs /= 60
-        let hours = cpsecs % 60
-        if hours < 10 {
-            if hours != 0 {
-                result += "0\(hours):"
-            }
-        } else {
-            result += "\(hours):"
+}
+
+func buildString(secs: Int) -> String {
+    var result = ""
+    var cpsecs = secs
+    let seconds = cpsecs % 60
+    cpsecs -= seconds
+    cpsecs /= 60
+    let minutes = cpsecs % 60
+    cpsecs -= minutes
+    cpsecs /= 60
+    let hours = cpsecs % 60
+    if hours < 10 {
+        if hours != 0 {
+            result += "0\(hours):"
         }
-        if minutes < 10 {
-            result += "0\(minutes):"
-        } else {
-            result += "\(minutes):"
-        }
-        if seconds < 10 {
-            result += "0\(seconds)"
-        } else {
-            result += "\(seconds)"
-        }
-        
-        return result
-        
+    } else {
+        result += "\(hours):"
     }
+    if minutes < 10 {
+        result += "0\(minutes):"
+    } else {
+        result += "\(minutes):"
+    }
+    if seconds < 10 {
+        result += "0\(seconds)"
+    } else {
+        result += "\(seconds)"
+    }
+    
+    return result
+    
 }

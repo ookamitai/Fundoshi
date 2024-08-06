@@ -64,7 +64,7 @@ struct ConfigView: View {
                                 Text("Transparency value for seperate window")
                                 HStack {
                                     Slider(value: $appConfig.detailWindowAlpha, in: 0.1...1)
-                                        .frame(width: 175)
+                                        .frame(width: 200)
                                     Text("\(Int(appConfig.detailWindowAlpha * 100))%")
                                         .onChange(of: appConfig.detailWindowAlpha) {
                                             for window in NSApplication.shared.windows {
@@ -81,7 +81,7 @@ struct ConfigView: View {
                                 Text("Top").tag(FlipAnimation.top)
                                 Text("Bottom").tag(FlipAnimation.bottom)
                             }
-                            .frame(width: 200)
+                            .frame(width: 250)
                         }
                         HStack {
                             Picker("Select font design", selection: $appConfig.fontStyle) {
@@ -90,7 +90,7 @@ struct ConfigView: View {
                                 Text("Monospaced").tag(FontSytle.monospaced)
                                 Text("Serif").tag(FontSytle.serif)
                             }
-                            .frame(width: 200)
+                            .frame(width: 250)
                         }
                         .padding(.bottom, 5)
                         HStack {
@@ -189,7 +189,7 @@ struct ConfigView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause)
+        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [])
         
         var body: some View {
             ConfigView(appConfig: $appConfig)

@@ -10,12 +10,6 @@
     "%lld%%" : {
 
     },
-    "1" : {
-
-    },
-    "2" : {
-
-    },
     "5min" : {
       "localizations" : {
         "zh-Hans" : {
@@ -157,6 +151,9 @@
           }
         }
       }
+    },
+    "Entry #%lld" : {
+
     },
     "Fundoshi" : {
       "shouldTranslate" : false

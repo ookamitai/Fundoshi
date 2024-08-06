@@ -6,6 +6,7 @@ struct AboutView: View {
     @State private var animateVersion = false
     @State private var animateAuthor = false
     @State private var animateInfo = false
+    @State private var animateQuit = false
     
     var body: some View {
         ZStack {
@@ -71,6 +72,12 @@ struct AboutView: View {
                         } label: {
                             Text("Quit")
                         }
+                        .opacity(animateQuit ? 1 : 0)
+                        .task {
+                            try? await Task.sleep(nanoseconds: 1_500_000_000)
+                            animateQuit = true
+                        }
+                        .animation(.default, value: animateQuit)
                     }
                     Spacer()
                 }

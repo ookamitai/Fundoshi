@@ -19,11 +19,9 @@ struct ContentView: View {
                     NavigationLink(value: "config") {
                         Label("Preferences", systemImage: "gear")
                     }
-                    
                     NavigationLink(value: "history") {
-                        Label("History", systemImage: "book.closed")
+                        Label("History", systemImage: "book.pages")
                     }
-                    
                     NavigationLink(value: "about") {
                         Label("About", systemImage: "info.circle")
                     }
@@ -37,6 +35,8 @@ struct ContentView: View {
             case "about":
                 AboutView()
                     .navigationTitle("About")
+            case "history":
+                HistoryView(appConfig: $appConfig)
             default:
                 Text("Select an item")
                     .navigationTitle("")

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 func getStyle(_ fs: FontSytle) -> Font.Design {
     switch fs {
@@ -19,6 +20,23 @@ func getStyle(_ fs: FontSytle) -> Font.Design {
     case .serif:
         return .serif
     }
+}
+
+func historyBuildString(_ h: [Int]) -> String {
+    var s = ""
+    for i in h {
+        s += (String(i) + ",")
+    }
+    let _ = s.popLast()
+    return s
+}
+
+func historyDissectString(_ s: String) -> [Int] {
+    var r: [Int] = []
+    for i in s.components(separatedBy: ",") {
+        r.append(Int(i) ?? 0)
+    }
+    return r
 }
 
 enum FontSytle {
@@ -43,6 +61,7 @@ struct AppConfig {
     var flipAnimation: FlipAnimation
     var detailWindowAlpha: CGFloat
     var contextClickAction: ContextClickAction
+    var history: [Int]
 }
 
 extension AppConfig: Codable {
@@ -56,6 +75,7 @@ extension AppConfig: Codable {
         case flipAnimation
         case detailWindowAlpha
         case contextClickAction
+        case history
 }
     
     func encode(to encoder: Encoder) throws {
@@ -92,6 +112,8 @@ extension AppConfig: Codable {
         case .openDetailWindow:
             try container.encode("detail", forKey: .contextClickAction)
         }
+        
+        try container.encode(historyBuildString(history), forKey: .history)
     }
     
     init(from decoder: Decoder) throws {
@@ -130,6 +152,7 @@ extension AppConfig: Codable {
         default:
             contextClickAction = .pause
         }
+        history = historyDissectString(try container.decode(String.self, forKey: .history))
     }
 }
 
