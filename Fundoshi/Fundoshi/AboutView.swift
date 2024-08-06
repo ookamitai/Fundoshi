@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AboutView: View {
-    @Binding var appConfig: AppConfig
     @State private var isHovering = false
     @State private var animateHeading = false
     @State private var animateVersion = false
@@ -20,19 +19,19 @@ struct AboutView: View {
                                 .opacity(animateHeading ? 1 : 0)
                                 .offset(x: animateHeading ? 0 : -10)
                                 .task {
-                                    try? await Task.sleep(nanoseconds: 0_500_000_000)
+                                    try? await Task.sleep(nanoseconds: 0_100_000_000)
                                     animateHeading = true
                                 }
                                 .animation(.default, value: animateHeading)
                                 .padding(.leading, 10)
-                            Text("v1.3")
+                            Text("v1.3.3")
                                 .font(.system(size: 15))
                                 .fontWeight(.ultraLight)
                                 .opacity(animateVersion ? 1 : 0)
                                 .offset(y: 6)
                                 .offset(x: animateVersion ? 0 : -10)
                                 .task {
-                                    try? await Task.sleep(nanoseconds: 1_000_000_000)
+                                    try? await Task.sleep(nanoseconds: 0_150_000_000)
                                     animateVersion = true
                                 }
                                 .animation(.default, value: animateVersion)
@@ -47,7 +46,7 @@ struct AboutView: View {
                                 .opacity(animateAuthor ? 1 : 0)
                                 .offset(x: animateAuthor ? 0 : -10)
                                 .task {
-                                    try? await Task.sleep(nanoseconds: 1_500_000_000)
+                                    try? await Task.sleep(nanoseconds: 0_200_000_000)
                                     animateAuthor = true
                                 }
                                 .animation(.default, value: animateAuthor)
@@ -61,7 +60,7 @@ struct AboutView: View {
                                 .opacity(animateInfo ? 1 : 0)
                                 .offset(x: animateInfo ? 0 : -10)
                                 .task {
-                                    try? await Task.sleep(nanoseconds: 2_000_000_000)
+                                    try? await Task.sleep(nanoseconds: 1_000_000_000)
                                     animateInfo = true
                                 }
                                 .animation(.default, value: animateInfo)
@@ -92,9 +91,9 @@ struct AboutView: View {
                             .blur(radius: isHovering ? 8 : 10)
                             .animation(.default, value: isHovering)
                         Text("About")
-                            .font(.system(size: 40))
+                            .font(.system(size: 30))
                             .fontWeight(.ultraLight)
-                            .offset(x: isHovering ? 40 : 30, y: 85)
+                            .offset(x: isHovering ? 60 : 50, y: 85)
                             .opacity(isHovering ? 0.6 : /* 0.2 */ 0)
                             .blur(radius: isHovering ? 0 : 3)
                             .animation(.default, value: isHovering)
@@ -110,10 +109,8 @@ struct AboutView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true)
-        
         var body: some View {
-            AboutView(appConfig: $appConfig)
+            AboutView()
         }
     }
     return PreviewWrapper()

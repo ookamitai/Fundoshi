@@ -19,7 +19,8 @@
 		FBC5E83A2B8A024100C2A459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E8392B8A024100C2A459 /* Assets.xcassets */; };
 		FBC5E83D2B8A024100C2A459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E83C2B8A024100C2A459 /* Preview Assets.xcassets */; };
 		FBC5E8462B8A04B100C2A459 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8452B8A04B100C2A459 /* MenuView.swift */; };
-		FBC5E8482B8A441C00C2A459 /* SeperateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8472B8A441C00C2A459 /* SeperateWindow.swift */; };
+		FBC5E8482B8A441C00C2A459 /* SeparateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8472B8A441C00C2A459 /* SeparateWindow.swift */; };
+		FBC8A1362C611EBC00FC6081 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FBC8A1352C611EBC00FC6081 /* MenuBarExtraAccess */; };
 		FBED019F2C5D3387009BE37C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FBED019E2C5D3387009BE37C /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +41,7 @@
 		FBC5E83E2B8A024100C2A459 /* Fundoshi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fundoshi.entitlements; sourceTree = "<group>"; };
 		FBC5E8442B8A03B800C2A459 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FBC5E8452B8A04B100C2A459 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		FBC5E8472B8A441C00C2A459 /* SeperateWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateWindow.swift; sourceTree = "<group>"; };
+		FBC5E8472B8A441C00C2A459 /* SeparateWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateWindow.swift; sourceTree = "<group>"; };
 		FBED019E2C5D3387009BE37C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC8A1362C611EBC00FC6081 /* MenuBarExtraAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +82,7 @@
 				FB64D8F62C5DC5A900D4D608 /* AppConfig.swift */,
 				FBED019E2C5D3387009BE37C /* Localizable.xcstrings */,
 				FBC5E8452B8A04B100C2A459 /* MenuView.swift */,
-				FBC5E8472B8A441C00C2A459 /* SeperateWindow.swift */,
+				FBC5E8472B8A441C00C2A459 /* SeparateWindow.swift */,
 				FB64D8FA2C5DC60D00D4D608 /* VisualEffectView.swift */,
 				FBC5E8372B8A024000C2A459 /* ContentView.swift */,
 				FB64D9082C5E01DD00D4D608 /* AboutView.swift */,
@@ -119,6 +121,9 @@
 			dependencies = (
 			);
 			name = Fundoshi;
+			packageProductDependencies = (
+				FBC8A1352C611EBC00FC6081 /* MenuBarExtraAccess */,
+			);
 			productName = Fundoshi;
 			productReference = FBC5E8322B8A024000C2A459 /* Fundoshi.app */;
 			productType = "com.apple.product-type.application";
@@ -149,6 +154,7 @@
 			);
 			mainGroup = FBC5E8292B8A024000C2A459;
 			packageReferences = (
+				FBC8A1342C611EBC00FC6081 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 			);
 			productRefGroup = FBC5E8332B8A024000C2A459 /* Products */;
 			projectDirPath = "";
@@ -179,7 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB64D8FF2C5DCBFA00D4D608 /* AppDelegate.swift in Sources */,
-				FBC5E8482B8A441C00C2A459 /* SeperateWindow.swift in Sources */,
+				FBC5E8482B8A441C00C2A459 /* SeparateWindow.swift in Sources */,
 				FB64D8FD2C5DCA6400D4D608 /* Notifications.swift in Sources */,
 				FB64D9012C5DF3B100D4D608 /* ConfigView.swift in Sources */,
 				FB64D9092C5E01DD00D4D608 /* AboutView.swift in Sources */,
@@ -327,10 +333,11 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 17;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 6PPLU9GFJ6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -344,7 +351,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ookamitai.Fundoshi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(inherited)";
@@ -360,10 +367,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fundoshi/Fundoshi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 17;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -380,7 +387,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ookamitai.Fundoshi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(inherited)";
@@ -411,6 +418,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FBC8A1342C611EBC00FC6081 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FBC8A1352C611EBC00FC6081 /* MenuBarExtraAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBC8A1342C611EBC00FC6081 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			productName = MenuBarExtraAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FBC5E82A2B8A024000C2A459 /* Project object */;
 }

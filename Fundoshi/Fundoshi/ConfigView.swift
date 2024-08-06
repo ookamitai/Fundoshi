@@ -19,6 +19,17 @@ struct ConfigView: View {
             VStack {
                 HStack {
                     VStack(alignment: .leading) {
+                        HStack {
+                            VStack {
+                                Divider()
+                                    .frame(width: 10)
+                            }
+                            Text("Behavior")
+                                .font(.subheadline.lowercaseSmallCaps())
+                            VStack {
+                                Divider()
+                            }
+                        }
                         Toggle(isOn: $appConfig.isShowingMenuBarTime) {
                             Text("Show time in menu bar")
                         }
@@ -28,7 +39,66 @@ struct ConfigView: View {
                         Toggle(isOn: $appConfig.playSound) {
                             Text("Play sound when timer ends")
                         }
-                        Divider()
+                        .padding(.bottom, 5)
+                        HStack {
+                            VStack {
+                                Divider()
+                                    .frame(width: 10)
+                            }
+                            Text("Appearance")
+                                .font(.subheadline.lowercaseSmallCaps())
+                            VStack {
+                                Divider()
+                            }
+                        }
+                        Toggle(isOn: $appConfig.useTranslucency) {
+                            Text("Enable blur for separate window")
+                        }
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Transparency value for seperate window")
+                                HStack {
+                                    Slider(value: $appConfig.detailWindowAlpha, in: 0.1...1)
+                                        .frame(width: 175)
+                                    Text("\(Int(appConfig.detailWindowAlpha * 100))%")
+                                        .onChange(of: appConfig.detailWindowAlpha) {
+                                            for window in NSApplication.shared.windows {
+                                                if window.title == "details" {
+                                                    window.alphaValue = appConfig.detailWindowAlpha
+                                                }
+                                            }
+                                        }
+                                }
+                            }
+                        }
+                        HStack {
+                            Picker("Select flip animation", selection: $appConfig.flipAnimation) {
+                                Text("Top").tag(FlipAnimation.top)
+                                Text("Bottom").tag(FlipAnimation.bottom)
+                            }
+                            .frame(width: 200)
+                        }
+                        HStack {
+                            Picker("Select font design", selection: $appConfig.fontStyle) {
+                                Text("Default").tag(FontSytle.noStyle)
+                                Text("Rounded").tag(FontSytle.rounded)
+                                Text("Monospaced").tag(FontSytle.monospaced)
+                                Text("Serif").tag(FontSytle.serif)
+                            }
+                            .frame(width: 200)
+                        }
+                        .padding(.bottom, 5)
+                        HStack {
+                            VStack {
+                                Divider()
+                                    .frame(width: 10)
+                            }
+                            Text("Misc")
+                                .font(.subheadline.lowercaseSmallCaps())
+                            VStack {
+                                Divider()
+                            }
+                        }
                         Toggle(isOn: $appConfig.launchAtLogin) {
                             Text("Launch at login")
                         }
@@ -96,9 +166,9 @@ struct ConfigView: View {
                             .blur(radius: isHovering ? 7 : 10)
                             .animation(.default, value: isHovering)
                         Text("Preferences")
-                            .font(.system(size: 40))
+                            .font(.system(size: 30))
                             .fontWeight(.ultraLight)
-                            .offset(x: isHovering ? 10 : 0, y: 85)
+                            .offset(x: isHovering ? 30 : 20, y: 85)
                             .opacity(isHovering ? 0.6 : /* 0.2 */ 0)
                             .blur(radius: isHovering ? 0 : 3)
                             .animation(.default, value: isHovering)
@@ -114,7 +184,7 @@ struct ConfigView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true)
+        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1)
         
         var body: some View {
             ConfigView(appConfig: $appConfig)

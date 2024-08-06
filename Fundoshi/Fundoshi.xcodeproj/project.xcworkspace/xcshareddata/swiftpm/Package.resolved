@@ -1,0 +1,15 @@
+{
+  "originHash" : "3b6570bfc36df7c01ffcaee18fb315ae8020e399f0a4fde6aa4b9e7ecba9b411",
+  "pins" : [
+    {
+      "identity" : "menubarextraaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MenuBarExtraAccess",
+      "state" : {
+        "revision" : "f5896b47e15e114975897354c7e1082c51a2bffd",
+        "version" : "1.0.5"
+      }
+    }
+  ],
+  "version" : 3
+}

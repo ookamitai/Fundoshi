@@ -31,7 +31,7 @@ struct ContentView: View {
                 ConfigView(appConfig: $appConfig)
                     .navigationTitle("Preferences")
             case "about":
-                AboutView(appConfig: $appConfig)
+                AboutView()
                     .navigationTitle("About")
             default:
                 Text("Select an item")

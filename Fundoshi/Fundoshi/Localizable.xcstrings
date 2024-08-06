@@ -4,6 +4,9 @@
     "%@" : {
       "shouldTranslate" : false
     },
+    "%lld%%" : {
+
+    },
     "5min" : {
       "localizations" : {
         "zh-Hans" : {
@@ -44,12 +47,42 @@
         }
       }
     },
+    "Appearance" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "外观"
+          }
+        }
+      }
+    },
     "Are you sure you want to reset ALL saved settings?" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "你确定要重置所有保存的设定吗？"
+          }
+        }
+      }
+    },
+    "Behavior" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行为"
+          }
+        }
+      }
+    },
+    "Bottom" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "向下"
           }
         }
       }
@@ -70,8 +103,21 @@
     "config" : {
       "shouldTranslate" : false
     },
+    "Default" : {
+
+    },
     "details" : {
       "shouldTranslate" : false
+    },
+    "Enable blur for separate window" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对分离窗口启用模糊"
+          }
+        }
+      }
     },
     "Enable notification" : {
       "localizations" : {
@@ -96,16 +142,8 @@
     "Fundoshi" : {
       "shouldTranslate" : false
     },
-    "fundoshi v1.3" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fundoshi v1.3"
-          }
-        }
-      },
-      "shouldTranslate" : false
+    "fundoshi v1.3.3" : {
+
     },
     "General" : {
       "localizations" : {
@@ -126,6 +164,19 @@
           }
         }
       }
+    },
+    "Misc" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他"
+          }
+        }
+      }
+    },
+    "Monospaced" : {
+
     },
     "pause" : {
       "localizations" : {
@@ -217,12 +268,35 @@
         }
       }
     },
+    "Rounded" : {
+
+    },
     "Select an item" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择一个项目"
+          }
+        }
+      }
+    },
+    "Select flip animation" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择翻页动画"
+          }
+        }
+      }
+    },
+    "Select font design" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择字体设计"
           }
         }
       }
@@ -236,6 +310,9 @@
           }
         }
       }
+    },
+    "Serif" : {
+
     },
     "set duration (min)..." : {
       "localizations" : {
@@ -277,6 +354,36 @@
         }
       }
     },
+    "Time's up" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间到"
+          }
+        }
+      }
+    },
+    "Timer of %@ ended." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "倒计时 %@ 结束。"
+          }
+        }
+      }
+    },
+    "Top" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "向上"
+          }
+        }
+      }
+    },
     "total: %@" : {
       "localizations" : {
         "zh-Hans" : {
@@ -287,8 +394,18 @@
         }
       }
     },
-    "v1.3" : {
-      "shouldTranslate" : false
+    "Transparency value for seperate window" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分离窗口透明度"
+          }
+        }
+      }
+    },
+    "v1.3.3" : {
+
     }
   },
   "version" : "1.0"

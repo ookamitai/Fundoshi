@@ -10,7 +10,7 @@ import UserNotifications
 
 func notify(msg: String) {
     let content = UNMutableNotificationContent()
-    content.title = "Time's up"
+    content.title = String(localized: "Time's up")
     content.subtitle = msg
     content.sound = UNNotificationSound.default
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)

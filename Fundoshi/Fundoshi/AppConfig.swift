@@ -6,12 +6,38 @@
 //
 
 import Foundation
+import SwiftUI
+
+func getStyle(_ fs: FontSytle) -> Font.Design {
+    switch fs {
+    case .noStyle:
+        return .default
+    case .monospaced:
+        return .monospaced
+    case .rounded:
+        return .rounded
+    case .serif:
+        return .serif
+    }
+}
+
+enum FontSytle {
+    case noStyle, monospaced, rounded, serif
+}
+
+enum FlipAnimation {
+    case top, bottom
+}
 
 struct AppConfig {
     var isShowingMenuBarTime: Bool
     var launchAtLogin: Bool
     var enableNotification: Bool
     var playSound: Bool
+    var useTranslucency: Bool
+    var fontStyle: FontSytle
+    var flipAnimation: FlipAnimation
+    var detailWindowAlpha: CGFloat
 }
 
 extension AppConfig: Codable {
@@ -20,7 +46,11 @@ extension AppConfig: Codable {
         case launchAtLogin
         case enableNotification
         case playSound
-    }
+        case useTranslucency
+        case fontStyle
+        case flipAnimation
+        case detailWindowAlpha
+}
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -28,6 +58,27 @@ extension AppConfig: Codable {
         try container.encode(launchAtLogin, forKey: .launchAtLogin)
         try container.encode(enableNotification, forKey: .enableNotification)
         try container.encode(playSound, forKey: .playSound)
+        try container.encode(useTranslucency, forKey: .useTranslucency)
+        
+        switch flipAnimation {
+        case .top:
+            try container.encode("top", forKey: .flipAnimation)
+        case .bottom:
+            try container.encode("bottom", forKey: .flipAnimation)
+        }
+        
+        switch fontStyle {
+        case .noStyle:
+            try container.encode("noStyle", forKey: .fontStyle)
+        case .monospaced:
+            try container.encode("monospaced", forKey: .fontStyle)
+        case .rounded:
+            try container.encode("rounded", forKey: .fontStyle)
+        case .serif:
+            try container.encode("serif", forKey: .fontStyle)
+        }
+        
+        try container.encode(detailWindowAlpha, forKey: .detailWindowAlpha)
     }
     
     init(from decoder: Decoder) throws {
@@ -36,6 +87,28 @@ extension AppConfig: Codable {
         launchAtLogin = try container.decode(Bool.self, forKey: .launchAtLogin)
         enableNotification = try container.decode(Bool.self, forKey: .enableNotification)
         playSound = try container.decode(Bool.self, forKey: .playSound)
+        useTranslucency = try container.decode(Bool.self, forKey: .useTranslucency)
+        switch try container.decode(String.self, forKey: .fontStyle) {
+        case "noStyle":
+            fontStyle = .noStyle
+        case "monospaced":
+            fontStyle = .monospaced
+        case "rounded":
+            fontStyle = .rounded
+        case "serif":
+            fontStyle = .serif
+        default:
+            fontStyle = .rounded
+        }
+        switch try container.decode(String.self, forKey: .flipAnimation) {
+        case "top":
+            flipAnimation = .top
+        case "bottom":
+            flipAnimation = .bottom
+        default:
+            flipAnimation = .top
+        }
+        detailWindowAlpha = try container.decode(CGFloat.self, forKey: .detailWindowAlpha)
     }
 }
 

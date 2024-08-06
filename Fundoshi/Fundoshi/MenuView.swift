@@ -22,7 +22,9 @@ struct MenuView: View {
     @State private var timerOn: Bool = false
     @State private var imageClockOpacity: Double = 0.05
     @State private var isDetailWindowOpen: Bool = false
+    @State private var doneLoad: Bool = false
     @Binding var appConfig: AppConfig
+    @Binding var isMenubarPresented: Bool
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     
@@ -53,9 +55,11 @@ struct MenuView: View {
                     Button {
                         timerOn.toggle()
                     } label: {
-                        Text(timerOn ? "pause" : "resume")
+                        ZStack {
+                            Text(timerOn ? "pause" : "resume")
+                        }
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(.plain)              
                     Button {
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
@@ -98,6 +102,7 @@ struct MenuView: View {
                     .buttonStyle(.plain)
                     Spacer()
                     Button {
+                        isMenubarPresented = false
                         if !isDetailWindowOpen {
                             isDetailWindowOpen.toggle()
                             NSApp.activate(ignoringOtherApps: true)
@@ -109,6 +114,7 @@ struct MenuView: View {
                                     window.standardWindowButton(NSWindow.ButtonType.closeButton)!.isHidden = true
                                     window.level = .floating
                                     window.isMovableByWindowBackground = true
+                                    window.alphaValue = appConfig.detailWindowAlpha
                                 }
                             }
                         } else {
@@ -131,6 +137,7 @@ struct MenuView: View {
                      */
                     Spacer()
                     Button {
+                        isMenubarPresented = false
                         NSApp.activate(ignoringOtherApps: true)
                         openWindow(id: "config")
                     } label: {
@@ -144,7 +151,7 @@ struct MenuView: View {
                 Spacer()
                 HStack(alignment: .bottom) {
                     HStack {
-                        Text("fundoshi v1.3")
+                        Text("fundoshi v1.3.3")
                             .foregroundStyle(.secondary)
                         Divider()
                         Button {
@@ -163,13 +170,19 @@ struct MenuView: View {
                             .foregroundStyle(.secondary)
                             .offset(x: -3, y: 8)
                         Text("\(timeString)")
-                            .fontDesign(.rounded)
-                            .font(.system(size: isHovering ? 40 : 35))
+                            .fontDesign(getStyle(appConfig.fontStyle))
+                            .opacity(doneLoad ? 1 : 0)
+                            .monospacedDigit()
+                            .font(.system(size: appConfig.fontStyle == .monospaced ? 30 : 35))
+                            .scaleEffect(isHovering ? CGSize(width: 1, height: 1) : CGSize(width: 0.9, height: 0.9) , anchor: .bottomTrailing)
                             .onHover(perform: { hovering in
                                 withAnimation {
                                     isHovering = hovering
                                 }
                             })
+                            .contentTransition(.numericText(countsDown: appConfig.flipAnimation == .top)).transaction { t in
+                                t.animation = .default
+                            }
                             .offset(y: 5)
                             .onReceive(timer) { _ in
                                 if timerOn {
@@ -190,7 +203,7 @@ struct MenuView: View {
                                         }
                                         // play sound
                                         if appConfig.enableNotification {
-                                            notify(msg: "Timer of \(buildString(secs: setTime)) ended.")
+                                            notify(msg: String(localized: "Timer of \(buildString(secs: setTime)) ended."))
                                         }
                                     }
                                 }
@@ -205,6 +218,10 @@ struct MenuView: View {
                 self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "mp3")!))
                 // dangrous use of !, but the file won't be absent anyway
                 // ding.mp4 was integrated into the app, so there shouldn't be a problem
+            }
+            .task {
+                try? await Task.sleep(nanoseconds: 0_400_000_000)
+                doneLoad = true
             }
             
             HStack {
