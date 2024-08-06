@@ -33,6 +33,9 @@ struct ConfigView: View {
                         Toggle(isOn: $appConfig.isShowingMenuBarTime) {
                             Text("Show time in menu bar")
                         }
+                        Toggle(isOn: $appConfig.isShowingMenuBarTimerStatus) {
+                            Text("Show timer status in menu bar")
+                        }
                         Toggle(isOn: $appConfig.enableNotification) {
                             Text("Enable notification")
                         }
@@ -189,7 +192,7 @@ struct ConfigView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [])
+        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [], isShowingMenuBarTimerStatus: true)
         
         var body: some View {
             ConfigView(appConfig: $appConfig)

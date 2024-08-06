@@ -13,7 +13,7 @@ struct FundoshiApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var appState = AppState()
     @AppStorage("timeString") private var timeString = "01:00"
-    @AppStorage("appConfig") private var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [])
+    @AppStorage("appConfig") private var appConfig = AppConfig(isShowingMenuBarTime: false, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [], isShowingMenuBarTimerStatus: true)
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
     
@@ -24,8 +24,13 @@ struct FundoshiApp: App {
                     window.animationBehavior = .utilityWindow
                 }
         } label: {
-            Image(systemName: appState.timerOn ? "clock.badge" : "clock")
+            Image(systemName: appConfig.isShowingMenuBarTimerStatus ? (appState.timerOn ? "play" : "pause") : "clock")
             Text(appConfig.isShowingMenuBarTime ? timeString : "")
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
+                        appState.isMenubarPresented = true
+                    }
+                }
         }
         .menuBarExtraStyle(.window)
         .menuBarExtraAccess(isPresented: $appState.isMenubarPresented) { statusItem in

@@ -49,7 +49,7 @@ struct MenuView: View {
                         }
                         appConfig.history.append(timeSec)
                     } label: {
-                        Text("start")
+                        Image(systemName: "play")
                     }
                     .buttonStyle(.plain)
                     .disabled(appState.timerOn)
@@ -58,7 +58,7 @@ struct MenuView: View {
                         appState.timerOn.toggle()
                     } label: {
                         ZStack {
-                            Text(appState.timerOn ? "pause" : "resume")
+                            Image(systemName: "pause")
                         }
                     }
                     .buttonStyle(.plain)              
@@ -67,12 +67,13 @@ struct MenuView: View {
                         timeString = buildString(secs: setTime)
                         appState.timerOn = false
                     } label: {
-                        Text("end")
+                        Image(systemName: "square")
                     }
                     .buttonStyle(.plain)
                     ProgressView(value: Double(setTime - timeSec), total: Double(setTime))
                 }
                 .foregroundStyle(.secondary)
+                .padding(1)
                 Divider()
                 HStack {
                     Button {
@@ -125,58 +126,29 @@ struct MenuView: View {
                         }
                         
                     } label: {
-                        Text("separate window")
+                        Image(systemName: "macwindow.on.rectangle")
                     }
                     .buttonStyle(.plain)
-                }
-                .foregroundStyle(.secondary)
-                HStack {
-                    /*
-                    Toggle(isOn: $isShowingMenuBarTime) {
-                        Text("show time in menu bar?")
-                            .foregroundStyle(.secondary)
-                    }
-                     */
-                    Spacer()
                     Button {
                         appState.isMenubarPresented = false
                         NSApp.activate(ignoringOtherApps: true)
                         openWindow(id: "config")
                     } label: {
-                        Text("preferences")
+                        Image(systemName: "gear")
                     }
                     .buttonStyle(.plain)
                     .keyboardShortcut(",", modifiers: [.command])
                 }
                 .foregroundStyle(.secondary)
-                .offset(y: 1)
-                Spacer()
-                HStack(alignment: .bottom) {
-                    HStack {
-                        Text("fundoshi v1.3.3")
-                            .foregroundStyle(.secondary)
-                        Divider()
-                        Button {
-                            exitApp()
-                        } label: {
-                            Text("quit")
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    .frame(height: 15)
+                HStack {
                     Spacer()
-                    
-                    VStack(alignment: .trailing) {
-                        Text("total: \(buildString(secs: setTime))")
-                            .font(.system(size: 10))
-                            .foregroundStyle(.secondary)
-                            .offset(x: -3, y: 8)
+                    VStack {
                         Text("\(timeString)")
                             .fontDesign(getStyle(appConfig.fontStyle))
                             .opacity(doneLoad ? 1 : 0)
                             .monospacedDigit()
-                            .font(.system(size: appConfig.fontStyle == .monospaced ? 30 : 35))
-                            .scaleEffect(isHovering ? CGSize(width: 1, height: 1) : CGSize(width: 0.9, height: 0.9) , anchor: .bottomTrailing)
+                            .font(.system(size: appConfig.fontStyle == .monospaced ? 50 : 55))
+                            .scaleEffect(isHovering ? CGSize(width: 1, height: 1) : CGSize(width: 0.9, height: 0.9) , anchor: .center)
                             .onHover(perform: { hovering in
                                 withAnimation {
                                     isHovering = hovering
@@ -185,7 +157,6 @@ struct MenuView: View {
                             .contentTransition(.numericText(countsDown: appConfig.flipAnimation == .top)).transaction { t in
                                 t.animation = .default
                             }
-                            .offset(y: 5)
                             .onReceive(timer) { _ in
                                 if appState.timerOn {
                                     if timeSec > 0 {
@@ -210,11 +181,26 @@ struct MenuView: View {
                                     }
                                 }
                             }
+                        Text("of \(buildString(secs: setTime))")
+                            .font(.system(size: 10))
+                            .foregroundStyle(.secondary)
                     }
+                    .padding(.top, 5)
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    Button {
+                        NSApplication.shared.terminate(self)
+                    } label: {
+                        Image(systemName: "power")
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.secondary)
                 }
                 
             }
-            .frame(width: 300, height: 160)
+            .frame(width: 300, height: 180)
             .padding(10)
             .onAppear {
                 self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "mp3")!))

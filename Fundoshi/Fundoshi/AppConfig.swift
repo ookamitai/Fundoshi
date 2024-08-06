@@ -62,6 +62,7 @@ struct AppConfig {
     var detailWindowAlpha: CGFloat
     var contextClickAction: ContextClickAction
     var history: [Int]
+    var isShowingMenuBarTimerStatus: Bool
 }
 
 extension AppConfig: Codable {
@@ -76,6 +77,7 @@ extension AppConfig: Codable {
         case detailWindowAlpha
         case contextClickAction
         case history
+        case isShowingMenuBarTimerStatus
 }
     
     func encode(to encoder: Encoder) throws {
@@ -114,6 +116,7 @@ extension AppConfig: Codable {
         }
         
         try container.encode(historyBuildString(history), forKey: .history)
+        try container.encode(isShowingMenuBarTimerStatus, forKey: .isShowingMenuBarTimerStatus)
     }
     
     init(from decoder: Decoder) throws {
@@ -153,6 +156,7 @@ extension AppConfig: Codable {
             contextClickAction = .pause
         }
         history = historyDissectString(try container.decode(String.self, forKey: .history))
+        isShowingMenuBarTimerStatus = try container.decode(Bool.self, forKey: .isShowingMenuBarTimerStatus)
     }
 }
 

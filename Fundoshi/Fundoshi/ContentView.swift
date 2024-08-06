@@ -22,6 +22,11 @@ struct ContentView: View {
                     NavigationLink(value: "history") {
                         Label("History", systemImage: "book.pages")
                     }
+                    NavigationLink(value: "preset") {
+                        Label("Preset", systemImage: "list.bullet")
+                    }
+                }
+                Section("About") {
                     NavigationLink(value: "about") {
                         Label("About", systemImage: "info.circle")
                     }
@@ -37,6 +42,9 @@ struct ContentView: View {
                     .navigationTitle("About")
             case "history":
                 HistoryView(appConfig: $appConfig)
+                    .navigationTitle("History")
+            case "preset":
+                Text("Placeholder")
             default:
                 Text("Select an item")
                     .navigationTitle("")

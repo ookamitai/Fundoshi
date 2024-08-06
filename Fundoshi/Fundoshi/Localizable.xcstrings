@@ -142,24 +142,18 @@
         }
       }
     },
-    "end" : {
+    "Entry #%lld" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "结束"
+            "value" : "项目 #%lld"
           }
         }
       }
     },
-    "Entry #%lld" : {
-
-    },
     "Fundoshi" : {
       "shouldTranslate" : false
-    },
-    "fundoshi v1.3.3" : {
-
     },
     "General" : {
       "localizations" : {
@@ -204,22 +198,22 @@
     "Monospaced" : {
 
     },
+    "of %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "共 %@"
+          }
+        }
+      }
+    },
     "Open / Close separate window" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开/关闭分离窗口"
-          }
-        }
-      }
-    },
-    "pause" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暂停"
           }
         }
       }
@@ -234,22 +228,15 @@
         }
       }
     },
+    "Placeholder" : {
+
+    },
     "Play sound when timer ends" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "计时器结束时播放声音"
-          }
-        }
-      }
-    },
-    "preferences" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "偏好设置"
           }
         }
       }
@@ -264,12 +251,12 @@
         }
       }
     },
-    "quit" : {
+    "Preset" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "退出"
+            "value" : "预设"
           }
         }
       }
@@ -300,16 +287,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重置保存的设定"
-          }
-        }
-      }
-    },
-    "resume" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "继续"
           }
         }
       }
@@ -347,16 +324,6 @@
         }
       }
     },
-    "separate window" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "分离窗口"
-          }
-        }
-      }
-    },
     "Serif" : {
 
     },
@@ -380,12 +347,12 @@
         }
       }
     },
-    "start" : {
+    "Show timer status in menu bar" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开始"
+            "value" : "在菜单栏里显示计时器状态"
           }
         }
       }
@@ -426,16 +393,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "向上"
-          }
-        }
-      }
-    },
-    "total: %@" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "总共: %@"
           }
         }
       }

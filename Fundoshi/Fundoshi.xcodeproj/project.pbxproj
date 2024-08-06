@@ -29,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB2330A62C62765F0095D858 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB3D89B52C621761001CDA2B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		FB3D89B92C621BBF001CDA2B /* MouseHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseHandlerView.swift; sourceTree = "<group>"; };
 		FB3D89BB2C622445001CDA2B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		FBC5E8392B8A024100C2A459 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBC5E83C2B8A024100C2A459 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FBC5E83E2B8A024100C2A459 /* Fundoshi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fundoshi.entitlements; sourceTree = "<group>"; };
-		FBC5E8442B8A03B800C2A459 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FBC5E8452B8A04B100C2A459 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FBC5E8472B8A441C00C2A459 /* SeparateWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateWindow.swift; sourceTree = "<group>"; };
 		FBED019E2C5D3387009BE37C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		FBC5E8342B8A024000C2A459 /* Fundoshi */ = {
 			isa = PBXGroup;
 			children = (
-				FBC5E8442B8A03B800C2A459 /* Info.plist */,
+				FB2330A62C62765F0095D858 /* Info.plist */,
 				FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */,
 				FB3D89BB2C622445001CDA2B /* AppState.swift */,
 				FB3D89B92C621BBF001CDA2B /* MouseHandlerView.swift */,
