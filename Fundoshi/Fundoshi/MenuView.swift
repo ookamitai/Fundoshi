@@ -21,7 +21,6 @@ struct MenuView: View {
     @Binding var timeString: String
     @Binding var appState: AppState
     @State private var imageClockOpacity: Double = 0.05
-    @State private var doneLoad: Bool = false
     @Binding var appConfig: AppConfig
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
@@ -144,9 +143,8 @@ struct MenuView: View {
                     Spacer()
                     VStack {
                         Text("\(timeString)")
-                            .fontDesign(getStyle(appConfig.fontStyle))
-                            .opacity(doneLoad ? 1 : 0)
                             .monospacedDigit()
+                            .fontDesign(getStyle(appConfig.fontStyle))
                             .font(.system(size: appConfig.fontStyle == .monospaced ? 50 : 55))
                             .scaleEffect(isHovering ? CGSize(width: 1, height: 1) : CGSize(width: 0.9, height: 0.9) , anchor: .center)
                             .onHover(perform: { hovering in
@@ -154,9 +152,6 @@ struct MenuView: View {
                                     isHovering = hovering
                                 }
                             })
-                            .contentTransition(.numericText(countsDown: appConfig.flipAnimation == .top)).transaction { t in
-                                t.animation = .default
-                            }
                             .onReceive(timer) { _ in
                                 if appState.timerOn {
                                     if timeSec > 0 {
@@ -184,6 +179,7 @@ struct MenuView: View {
                         Text("of \(buildString(secs: setTime))")
                             .font(.system(size: 10))
                             .foregroundStyle(.secondary)
+                            .offset(y: -5)
                     }
                     .padding(.top, 5)
                     Spacer()
@@ -207,10 +203,6 @@ struct MenuView: View {
                 // dangrous use of !, but the file won't be absent anyway
                 // ding.mp4 was integrated into the app, so there shouldn't be a problem
             }
-            .task {
-                try? await Task.sleep(nanoseconds: 0_400_000_000)
-                doneLoad = true
-            }
             
             HStack {
                 Spacer()
@@ -227,7 +219,6 @@ struct MenuView: View {
                 }
             }
             .padding(5)
-            
         }
     }
 }

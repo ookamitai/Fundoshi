@@ -24,6 +24,7 @@ struct FundoshiApp: App {
                     window.animationBehavior = .utilityWindow
                 }
         } label: {
+            
             Image(systemName: appConfig.isShowingMenuBarTimerStatus ? (appState.timerOn ? "play" : "pause") : "clock")
             Text(appConfig.isShowingMenuBarTime ? timeString : "")
                 .onAppear {

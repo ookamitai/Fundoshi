@@ -18,13 +18,14 @@
 		FB64D9012C5DF3B100D4D608 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64D9002C5DF3B100D4D608 /* ConfigView.swift */; };
 		FB64D9092C5E01DD00D4D608 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64D9082C5E01DD00D4D608 /* AboutView.swift */; };
 		FB87F5A82B8B4AFD00F9060F /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB87F5A72B8B4AFD00F9060F /* ding.mp3 */; };
+		FB9EA2162C628446002675DC /* HourglassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9EA2152C628443002675DC /* HourglassView.swift */; };
+		FBB1946C2C630B8300A2015F /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FBB1946B2C630B8300A2015F /* MenuBarExtraAccess */; };
 		FBC5E8362B8A024000C2A459 /* FundoshiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */; };
 		FBC5E8382B8A024000C2A459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8372B8A024000C2A459 /* ContentView.swift */; };
 		FBC5E83A2B8A024100C2A459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E8392B8A024100C2A459 /* Assets.xcassets */; };
 		FBC5E83D2B8A024100C2A459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC5E83C2B8A024100C2A459 /* Preview Assets.xcassets */; };
 		FBC5E8462B8A04B100C2A459 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8452B8A04B100C2A459 /* MenuView.swift */; };
 		FBC5E8482B8A441C00C2A459 /* SeparateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5E8472B8A441C00C2A459 /* SeparateWindow.swift */; };
-		FBC8A1362C611EBC00FC6081 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FBC8A1352C611EBC00FC6081 /* MenuBarExtraAccess */; };
 		FBED019F2C5D3387009BE37C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FBED019E2C5D3387009BE37C /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		FB64D9002C5DF3B100D4D608 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		FB64D9082C5E01DD00D4D608 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		FB87F5A72B8B4AFD00F9060F /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		FB9EA2152C628443002675DC /* HourglassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourglassView.swift; sourceTree = "<group>"; };
 		FBC5E8322B8A024000C2A459 /* Fundoshi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fundoshi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoshiApp.swift; sourceTree = "<group>"; };
 		FBC5E8372B8A024000C2A459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBC8A1362C611EBC00FC6081 /* MenuBarExtraAccess in Frameworks */,
+				FBB1946C2C630B8300A2015F /* MenuBarExtraAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				FB2330A62C62765F0095D858 /* Info.plist */,
+				FB9EA2152C628443002675DC /* HourglassView.swift */,
 				FBC5E8352B8A024000C2A459 /* FundoshiApp.swift */,
 				FB3D89BB2C622445001CDA2B /* AppState.swift */,
 				FB3D89B92C621BBF001CDA2B /* MouseHandlerView.swift */,
@@ -134,7 +137,7 @@
 			);
 			name = Fundoshi;
 			packageProductDependencies = (
-				FBC8A1352C611EBC00FC6081 /* MenuBarExtraAccess */,
+				FBB1946B2C630B8300A2015F /* MenuBarExtraAccess */,
 			);
 			productName = Fundoshi;
 			productReference = FBC5E8322B8A024000C2A459 /* Fundoshi.app */;
@@ -166,7 +169,7 @@
 			);
 			mainGroup = FBC5E8292B8A024000C2A459;
 			packageReferences = (
-				FBC8A1342C611EBC00FC6081 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+				FB9EA2172C6309D9002675DC /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 			);
 			productRefGroup = FBC5E8332B8A024000C2A459 /* Products */;
 			projectDirPath = "";
@@ -201,6 +204,7 @@
 				FB644DFD2C62421400825AAE /* HistoryCard.swift in Sources */,
 				FB64D8FD2C5DCA6400D4D608 /* Notifications.swift in Sources */,
 				FB64D9012C5DF3B100D4D608 /* ConfigView.swift in Sources */,
+				FB9EA2162C628446002675DC /* HourglassView.swift in Sources */,
 				FB64D9092C5E01DD00D4D608 /* AboutView.swift in Sources */,
 				FB3D89B62C621761001CDA2B /* HistoryView.swift in Sources */,
 				FB64D8F72C5DC5A900D4D608 /* AppConfig.swift in Sources */,
@@ -349,7 +353,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 30;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -386,7 +390,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 30;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -436,7 +440,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FBC8A1342C611EBC00FC6081 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+		FB9EA2172C6309D9002675DC /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
 			requirement = {
@@ -447,9 +451,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FBC8A1352C611EBC00FC6081 /* MenuBarExtraAccess */ = {
+		FBB1946B2C630B8300A2015F /* MenuBarExtraAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FBC8A1342C611EBC00FC6081 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			package = FB9EA2172C6309D9002675DC /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
 			productName = MenuBarExtraAccess;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -10,7 +10,6 @@ import SwiftUI
 struct SeparateWindow: View {
     @Binding var timeString: String
     @State var isHovering: Bool = false
-    @State var doneLoad: Bool = false
     @Binding var appConfig: AppConfig
     
     var body: some View {
@@ -25,8 +24,11 @@ struct SeparateWindow: View {
                     Spacer()
                     Text(timeString)
                         .monospacedDigit()
-                        .opacity(doneLoad ? 1 : 0)
                         .fontDesign(getStyle(appConfig.fontStyle))
+                        .contentTransition(.numericText(countsDown: appConfig.flipAnimation == .top)).transaction { t in
+                            t.animation = .default
+                        }
+                        .contentTransition(.symbolEffect)
                         .font(.system(size: appConfig.fontStyle == .monospaced ? 30 : 35))
                         .scaleEffect(isHovering ? CGSize(width: 1, height: 1) : CGSize(width: 0.9, height: 0.9) , anchor: .center)
                         .shadow(radius: 10)
@@ -36,17 +38,11 @@ struct SeparateWindow: View {
                             isHovering = hovering
                         }
                         .animation(.default, value: isHovering)
-                        .contentTransition(.numericText(countsDown: appConfig.flipAnimation == .top)).transaction { t in
-                            t.animation = .default
-                        }
                     Spacer()
                 }
                 Spacer()
             }
-            .task {
-                try? await Task.sleep(nanoseconds: 0_400_000_000)
-                doneLoad = true
-            }
+            .drawingGroup(opaque: true)
             /*
             Button {
                 NSApplication.shared.keyWindow?.close()
