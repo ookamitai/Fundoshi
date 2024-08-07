@@ -19,9 +19,6 @@ struct ContentView: View {
                     NavigationLink(value: "config") {
                         Label("Preferences", systemImage: "gear")
                     }
-                    NavigationLink(value: "history") {
-                        Label("History", systemImage: "book.pages")
-                    }
                     NavigationLink(value: "preset") {
                         Label("Preset", systemImage: "list.bullet")
                     }
@@ -40,11 +37,9 @@ struct ContentView: View {
             case "about":
                 AboutView()
                     .navigationTitle("About")
-            case "history":
-                HistoryView(appConfig: $appConfig)
-                    .navigationTitle("History")
             case "preset":
-                Text("Placeholder")
+                PresetView(appConfig: $appConfig)
+                    .navigationTitle("Preset")
             default:
                 Text("Select an item")
                     .navigationTitle("")

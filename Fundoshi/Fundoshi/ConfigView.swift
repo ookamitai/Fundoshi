@@ -192,7 +192,7 @@ struct ConfigView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [], isShowingMenuBarTimerStatus: true)
+        @State var appConfig = AppConfig(isShowingMenuBarTime: true, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [], isShowingMenuBarTimerStatus: true, preset: [5, 20, 45])
         
         var body: some View {
             ConfigView(appConfig: $appConfig)

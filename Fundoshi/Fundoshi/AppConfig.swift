@@ -22,7 +22,7 @@ func getStyle(_ fs: FontSytle) -> Font.Design {
     }
 }
 
-func historyBuildString(_ h: [Int]) -> String {
+func arrayBuildString(_ h: [Int]) -> String {
     var s = ""
     for i in h {
         s += (String(i) + ",")
@@ -31,7 +31,7 @@ func historyBuildString(_ h: [Int]) -> String {
     return s
 }
 
-func historyDissectString(_ s: String) -> [Int] {
+func arrayDissectString(_ s: String) -> [Int] {
     var r: [Int] = []
     for i in s.components(separatedBy: ",") {
         r.append(Int(i) ?? 0)
@@ -63,6 +63,7 @@ struct AppConfig {
     var contextClickAction: ContextClickAction
     var history: [Int]
     var isShowingMenuBarTimerStatus: Bool
+    var preset: [Int]
 }
 
 extension AppConfig: Codable {
@@ -78,6 +79,7 @@ extension AppConfig: Codable {
         case contextClickAction
         case history
         case isShowingMenuBarTimerStatus
+        case preset
 }
     
     func encode(to encoder: Encoder) throws {
@@ -115,8 +117,9 @@ extension AppConfig: Codable {
             try container.encode("detail", forKey: .contextClickAction)
         }
         
-        try container.encode(historyBuildString(history), forKey: .history)
+        try container.encode(arrayBuildString(history), forKey: .history)
         try container.encode(isShowingMenuBarTimerStatus, forKey: .isShowingMenuBarTimerStatus)
+        try container.encode(arrayBuildString(preset), forKey: .preset)
     }
     
     init(from decoder: Decoder) throws {
@@ -155,8 +158,9 @@ extension AppConfig: Codable {
         default:
             contextClickAction = .pause
         }
-        history = historyDissectString(try container.decode(String.self, forKey: .history))
+        history = arrayDissectString(try container.decode(String.self, forKey: .history))
         isShowingMenuBarTimerStatus = try container.decode(Bool.self, forKey: .isShowingMenuBarTimerStatus)
+        preset = arrayDissectString(try container.decode(String.self, forKey: .preset))
     }
 }
 

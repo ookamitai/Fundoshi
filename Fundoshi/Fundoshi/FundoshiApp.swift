@@ -13,7 +13,7 @@ struct FundoshiApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var appState = AppState()
     @AppStorage("timeString") private var timeString = "01:00"
-    @AppStorage("appConfig") private var appConfig = AppConfig(isShowingMenuBarTime: false, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [], isShowingMenuBarTimerStatus: true)
+    @AppStorage("appConfig") private var appConfig = AppConfig(isShowingMenuBarTime: false, launchAtLogin: false, enableNotification: true, playSound: true, useTranslucency: true, fontStyle: .rounded, flipAnimation: .top, detailWindowAlpha: 1, contextClickAction: .pause, history: [], isShowingMenuBarTimerStatus: true, preset: [5, 20, 45])
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
     

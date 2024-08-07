@@ -53,6 +53,8 @@ struct MenuView: View {
                     .buttonStyle(.plain)
                     .disabled(appState.timerOn)
                     .opacity(appState.timerOn ? 0.5 : 1)
+                    Spacer()
+                        .frame(width: 10)
                     Button {
                         appState.timerOn.toggle()
                     } label: {
@@ -60,13 +62,15 @@ struct MenuView: View {
                             Image(systemName: "pause")
                         }
                     }
-                    .buttonStyle(.plain)              
+                    .buttonStyle(.plain)  
+                    Spacer()
+                        .frame(width: 10)
                     Button {
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
                         appState.timerOn = false
                     } label: {
-                        Image(systemName: "square")
+                        Image(systemName: "stop")
                     }
                     .buttonStyle(.plain)
                     ProgressView(value: Double(setTime - timeSec), total: Double(setTime))
@@ -77,29 +81,29 @@ struct MenuView: View {
                 HStack {
                     Button {
                         appState.timerOn = false
-                        setTime = 5 * 60
+                        setTime = appConfig.preset[0] * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
                     } label: {
-                        Text("5min")
+                        Text("\(appConfig.preset[0])min")
                     }
                     .buttonStyle(.plain)
                     Button {
                         appState.timerOn = false
-                        setTime = 20 * 60
+                        setTime = appConfig.preset[1] * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
                     } label: {
-                        Text("20min")
+                        Text("\(appConfig.preset[1])min")
                     }
                     .buttonStyle(.plain)
                     Button {
                         appState.timerOn = false
-                        setTime = 45 * 60
+                        setTime = appConfig.preset[2] * 60
                         timeSec = setTime
                         timeString = buildString(secs: setTime)
                     } label: {
-                        Text("45min")
+                        Text("\(appConfig.preset[2])min")
                     }
                     .buttonStyle(.plain)
                     Spacer()
@@ -189,14 +193,14 @@ struct MenuView: View {
                     Button {
                         NSApplication.shared.terminate(self)
                     } label: {
-                        Image(systemName: "power")
+                        Image(systemName: "door.right.hand.open")
                     }
                     .buttonStyle(.plain)
                     .foregroundStyle(.secondary)
                 }
                 
             }
-            .frame(width: 300, height: 180)
+            .frame(width: 300, height: 185)
             .padding(10)
             .onAppear {
                 self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "mp3")!))
