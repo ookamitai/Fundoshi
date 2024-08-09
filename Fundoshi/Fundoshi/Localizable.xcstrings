@@ -17,37 +17,11 @@
 
     },
     "%lldmin" : {
-
-    },
-    "5min" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5分钟"
-          }
-        }
-      }
-    },
-    "20min" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "20分钟"
-          }
-        }
-      }
-    },
-    "45min" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "45分钟"
+            "value" : "%lld分钟"
           }
         }
       }
@@ -128,14 +102,38 @@
         }
       }
     },
+    "Custom" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义"
+          }
+        }
+      }
+    },
     "Default" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认"
+          }
+        }
+      }
     },
     "details" : {
       "shouldTranslate" : false
     },
     "Edit" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
+        }
+      }
     },
     "Enable blur for separate window" : {
       "localizations" : {
@@ -157,20 +155,6 @@
         }
       }
     },
-    "Entry #%lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "项目 #%lld"
-          }
-        }
-      }
-    },
-    "Extra" : {
-
-    },
     "Fundoshi" : {
       "shouldTranslate" : false
     },
@@ -180,17 +164,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通用"
-          }
-        }
-      }
-    },
-    "History" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "历史"
           }
         }
       }
@@ -279,13 +252,34 @@
       }
     },
     "Preset #1" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "预设 #1"
+          }
+        }
+      }
     },
     "Preset #2" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "预设 #2"
+          }
+        }
+      }
     },
     "Preset #3" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "预设 #3"
+          }
+        }
+      }
     },
     "Quit" : {
       "localizations" : {
@@ -353,17 +347,6 @@
     "Serif" : {
 
     },
-    "set duration (min)..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置时长（分钟）"
-          }
-        }
-      }
-    },
     "Show time in menu bar" : {
       "localizations" : {
         "zh-Hans" : {
@@ -394,8 +377,15 @@
         }
       }
     },
-    "time (mins)" : {
-
+    "Time (mins)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间 (分钟)"
+          }
+        }
+      }
     },
     "Time's up" : {
       "localizations" : {

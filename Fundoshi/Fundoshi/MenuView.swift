@@ -31,6 +31,7 @@ public struct CustomCompactSliderStyle: CompactSliderStyle {
                 )
             )
             .clipShape(RoundedRectangle(cornerRadius: 4))
+            .animation(.default, value: configuration.isHovering)
     }
 }
 
@@ -66,13 +67,17 @@ struct MenuView: View {
             VStack {
                 HStack {
                     CompactSlider(value: $doubleHelper, in: 1...61, step: 1) {
-                        Text("time (mins)")
+                        Text("Time (mins)")
                         Spacer()
-                        Text(doubleHelper <= 60.0 ? "\(Int(doubleHelper))" : "Extra")
+                        Text(doubleHelper <= 60.0 ? "\(Int(doubleHelper))" : "Custom")
                     }
                     .frame(maxWidth: showCustomTime ? 300 : .infinity)
                     .onChange(of: doubleHelper) { _, newValue in
+                        audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "tick", ofType: "caf")!))
+                        audioPlayer.play()
                         if doubleHelper == 61.0 {
+                            audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "extra", ofType: "caf")!))
+                            audioPlayer.play()
                             showCustomTime = true
                             return
                         } else {
@@ -91,15 +96,14 @@ struct MenuView: View {
                     .compactSliderStyle(.custom)
                     
                     TextField("", text: $tmp)
-                        .onSubmit {
-                            appState.timerOn = false
+                        .onChange(of: tmp) {
                             setTime = (Int(tmp) ?? 1) * 60
                             timeSec = setTime
                             timeString = buildString(secs: setTime)
                         }
                         .frame(width: showCustomTime ? 50 : 0)
                         .opacity(showCustomTime ? 1 : 0)
-                    
+                        .animation(.default, value: showCustomTime)
                 }
                 HStack {
                     Button {
@@ -233,6 +237,7 @@ struct MenuView: View {
                                         timeSec = setTime
                                         timeString = buildString(secs: timeSec)
                                         if appConfig.playSound {
+                                            audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "caf")!))
                                             audioPlayer.play()
                                         }
                                         // play sound
@@ -264,11 +269,6 @@ struct MenuView: View {
             }
             .frame(width: 300, height: 185)
             .padding(10)
-            .onAppear {
-                self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "mp3")!))
-                // dangrous use of !, but the file won't be absent anyway
-                // ding.mp4 was integrated into the app, so there shouldn't be a problem
-            }
             
             HStack {
                 Spacer()
