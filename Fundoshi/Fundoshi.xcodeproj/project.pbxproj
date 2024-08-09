@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB3D89BC2C622445001CDA2B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D89BB2C622445001CDA2B /* AppState.swift */; };
+		FB62075E2C661C2300D7BFD2 /* CompactSlider in Frameworks */ = {isa = PBXBuildFile; productRef = FB62075D2C661C2300D7BFD2 /* CompactSlider */; };
 		FB62F4E82C63A8C1003D50C3 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62F4E72C63A8C1003D50C3 /* MouseHandlerView.swift */; };
 		FB62F4EA2C63AB79003D50C3 /* PresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62F4E92C63AB79003D50C3 /* PresetView.swift */; };
 		FB64D8F72C5DC5A900D4D608 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64D8F62C5DC5A900D4D608 /* AppConfig.swift */; };
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBB1946C2C630B8300A2015F /* MenuBarExtraAccess in Frameworks */,
+				FB62075E2C661C2300D7BFD2 /* CompactSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +134,7 @@
 			name = Fundoshi;
 			packageProductDependencies = (
 				FBB1946B2C630B8300A2015F /* MenuBarExtraAccess */,
+				FB62075D2C661C2300D7BFD2 /* CompactSlider */,
 			);
 			productName = Fundoshi;
 			productReference = FBC5E8322B8A024000C2A459 /* Fundoshi.app */;
@@ -164,6 +167,7 @@
 			mainGroup = FBC5E8292B8A024000C2A459;
 			packageReferences = (
 				FB9EA2172C6309D9002675DC /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+				FB62075C2C661C2300D7BFD2 /* XCRemoteSwiftPackageReference "CompactSlider" */,
 			);
 			productRefGroup = FBC5E8332B8A024000C2A459 /* Products */;
 			projectDirPath = "";
@@ -345,7 +349,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -382,7 +386,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Fundoshi/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -432,6 +436,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FB62075C2C661C2300D7BFD2 /* XCRemoteSwiftPackageReference "CompactSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/buh/CompactSlider";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.6;
+			};
+		};
 		FB9EA2172C6309D9002675DC /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
@@ -443,6 +455,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FB62075D2C661C2300D7BFD2 /* CompactSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB62075C2C661C2300D7BFD2 /* XCRemoteSwiftPackageReference "CompactSlider" */;
+			productName = CompactSlider;
+		};
 		FBB1946B2C630B8300A2015F /* MenuBarExtraAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FB9EA2172C6309D9002675DC /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;

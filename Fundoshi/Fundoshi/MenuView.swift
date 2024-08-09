@@ -7,6 +7,37 @@
 
 import SwiftUI
 import AVKit
+import CompactSlider
+
+public struct CustomCompactSliderStyle: CompactSliderStyle {
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(
+                configuration.isHovering || configuration.isDragging ? .primary : .primary.opacity(0.6)
+            )
+            .background(
+                Color.accentColor.opacity(0.1)
+            )
+            .compactSliderSecondaryAppearance(
+                progressShapeStyle: LinearGradient(
+                    colors: [.accentColor.opacity(0.1), .accentColor.opacity(0.3)],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                ),
+                focusedProgressShapeStyle: LinearGradient(
+                    colors: [.accentColor.opacity(0.2), .accentColor.opacity(0.4)],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 4))
+    }
+}
+
+public extension CompactSliderStyle where Self == CustomCompactSliderStyle {
+    static var `custom`: CustomCompactSliderStyle { CustomCompactSliderStyle() }
+}
+
 
 struct MenuView: View {
     private func exitApp() {
@@ -21,6 +52,8 @@ struct MenuView: View {
     @Binding var timeString: String
     @Binding var appState: AppState
     @State private var imageClockOpacity: Double = 0.05
+    @State private var doubleHelper: Double = 0.0
+    @State private var showCustomTime: Bool = false
     @Binding var appConfig: AppConfig
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
@@ -31,13 +64,43 @@ struct MenuView: View {
     var body: some View {
         ZStack {
             VStack {
-                TextField("set duration (min)...", text: $tmp)
-                    .onSubmit {
-                        appState.timerOn = false
-                        setTime = (Int(tmp) ?? 1) * 60
-                        timeSec = setTime
-                        timeString = buildString(secs: setTime)
+                HStack {
+                    CompactSlider(value: $doubleHelper, in: 1...61, step: 1) {
+                        Text("time (mins)")
+                        Spacer()
+                        Text(doubleHelper <= 60.0 ? "\(Int(doubleHelper))" : "Extra")
                     }
+                    .frame(maxWidth: showCustomTime ? 300 : .infinity)
+                    .onChange(of: doubleHelper) { _, newValue in
+                        if doubleHelper == 61.0 {
+                            showCustomTime = true
+                            return
+                        } else {
+                            showCustomTime = false
+                        }
+                        setTime = Int(newValue) * 60
+                        if !appState.timerOn {
+                            timeSec = Int(setTime)
+                            timeString = buildString(secs: timeSec)
+                        }
+                    }
+                    .onAppear {
+                        doubleHelper = Double(setTime / 60)
+                    }
+                    .animation(.default, value: showCustomTime)
+                    .compactSliderStyle(.custom)
+                    
+                    TextField("", text: $tmp)
+                        .onSubmit {
+                            appState.timerOn = false
+                            setTime = (Int(tmp) ?? 1) * 60
+                            timeSec = setTime
+                            timeString = buildString(secs: setTime)
+                        }
+                        .frame(width: showCustomTime ? 50 : 0)
+                        .opacity(showCustomTime ? 1 : 0)
+                    
+                }
                 HStack {
                     Button {
                         timeSec = setTime
@@ -73,7 +136,6 @@ struct MenuView: View {
                         Image(systemName: "stop")
                     }
                     .buttonStyle(.plain)
-                    ProgressView(value: Double(setTime - timeSec), total: Double(setTime))
                 }
                 .foregroundStyle(.secondary)
                 .padding(1)

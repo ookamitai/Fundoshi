@@ -40,7 +40,7 @@ struct PresetView: View {
                     HStack {
                         TextField("Preset #2", text: $t2)
                             .onSubmit {
-                                appConfig.preset[1] = Int(t1) ?? appConfig.preset[1]
+                                appConfig.preset[1] = Int(t2) ?? appConfig.preset[1]
                             }
                             .frame(width: 100)
                         Text("(\(appConfig.preset[1]))")
@@ -49,7 +49,7 @@ struct PresetView: View {
                     HStack {
                         TextField("Preset #3", text: $t3)
                             .onSubmit {
-                                appConfig.preset[2] = Int(t1) ?? appConfig.preset[2]
+                                appConfig.preset[2] = Int(t3) ?? appConfig.preset[2]
                             }
                             .frame(width: 100)
                         Text("(\(appConfig.preset[2]))")

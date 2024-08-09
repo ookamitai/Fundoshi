@@ -10,6 +10,9 @@
     "%@" : {
       "shouldTranslate" : false
     },
+    "%lld" : {
+
+    },
     "%lld%%" : {
 
     },
@@ -164,6 +167,9 @@
           }
         }
       }
+    },
+    "Extra" : {
+
     },
     "Fundoshi" : {
       "shouldTranslate" : false
@@ -348,6 +354,7 @@
 
     },
     "set duration (min)..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -386,6 +393,9 @@
           }
         }
       }
+    },
+    "time (mins)" : {
+
     },
     "Time's up" : {
       "localizations" : {

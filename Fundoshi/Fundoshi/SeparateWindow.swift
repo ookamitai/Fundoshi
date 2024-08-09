@@ -42,7 +42,6 @@ struct SeparateWindow: View {
                 }
                 Spacer()
             }
-            .drawingGroup(opaque: true)
             /*
             Button {
                 NSApplication.shared.keyWindow?.close()
