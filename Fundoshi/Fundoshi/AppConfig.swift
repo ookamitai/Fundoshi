@@ -27,7 +27,7 @@ func arrayBuildString(_ h: [Int]) -> String {
     for i in h {
         s += (String(i) + ",")
     }
-    let _ = s.popLast()
+    s.removeLast()
     return s
 }
 

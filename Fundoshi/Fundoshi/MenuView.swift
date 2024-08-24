@@ -36,7 +36,7 @@ public struct CustomCompactSliderStyle: CompactSliderStyle {
 }
 
 public extension CompactSliderStyle where Self == CustomCompactSliderStyle {
-    static var `custom`: CustomCompactSliderStyle { CustomCompactSliderStyle() }
+    static var `test`: CustomCompactSliderStyle { CustomCompactSliderStyle() }
 }
 
 
@@ -73,9 +73,10 @@ struct MenuView: View {
                     }
                     .frame(maxWidth: showCustomTime ? 300 : .infinity)
                     .onChange(of: doubleHelper) { _, newValue in
+                        appState.timerOn = false
                         audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "tick", ofType: "caf")!))
                         audioPlayer.play()
-                        if doubleHelper == 61.0 {
+                        if doubleHelper >= 61.0 {
                             audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "extra", ofType: "caf")!))
                             audioPlayer.play()
                             showCustomTime = true
@@ -90,13 +91,14 @@ struct MenuView: View {
                         }
                     }
                     .onAppear {
-                        doubleHelper = Double(setTime / 60)
+                        doubleHelper = setTime / 60 >= 60 ? 61.0 : Double(setTime / 60)
                     }
                     .animation(.default, value: showCustomTime)
-                    .compactSliderStyle(.custom)
+                    .compactSliderStyle(.test)
                     
                     TextField("", text: $tmp)
                         .onChange(of: tmp) {
+                            appState.timerOn = false
                             setTime = (Int(tmp) ?? 1) * 60
                             timeSec = setTime
                             timeString = buildString(secs: setTime)
@@ -279,7 +281,7 @@ struct MenuView: View {
                         .opacity(imageClockOpacity)
                         .frame(width: 150, height: 150)
                         .offset(x: 60, y: 60)
-                        .blur(radius: 2)
+                        .blur(radius: 8)
                         .shadow(radius: 3)
                         .animation(.default, value: imageClockOpacity)
                 }
